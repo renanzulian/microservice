@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+})
+
 import routes from './app/routes'
 import express from 'express'
 import morgan from 'morgan'
