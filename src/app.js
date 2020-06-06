@@ -1,34 +1,18 @@
-import routes from './app/routes'
+// import routes from './app/routes'
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 
-class Application {
-  constructor() {
-    this.server = express()
+const server = express()
 
-    this.middlewares()
-    this.routes()
-    this.expectionHandler()
-  }
+server.use(morgan('dev'))
+server.use(cors())
+server.use(express.json())
 
-  middlewares() {
-    this.server.use(morgan('dev'))
-    this.server.use(cors())
-    this.server.use(express.json())
-  }
+server.use('*', (req, res) => {
+  return res.status(404).send({
+    message: 'Method does not found.',
+  })
+})
 
-  routes() {
-    this.server.use('/', routes)
-  }
-
-  expectionHandler() {
-    this.server.use('*', (req, res) => {
-      return res.status(404).send({
-        message: 'Method does not found.',
-      })
-    })
-  }
-}
-
-export default Application()
+export default server

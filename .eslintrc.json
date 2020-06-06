@@ -21,4 +21,4 @@
     "rules": {
       "prettier/prettier": "error"
     }
-  }
+}
