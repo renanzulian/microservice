@@ -1,7 +1,7 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-module.export = {
+module.exports = {
   username: process.env.SQL_USERNAME,
   password: process.env.SQL_PASSWORD,
   database: process.env.SQL_DATABASE,
